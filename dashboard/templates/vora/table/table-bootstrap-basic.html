@@ -1,0 +1,287 @@
+{% extends 'vora/elements/layouts/admin.html' %}
+{% load static %}
+
+<!-- Additional Css -->
+{% block additional_css  %}
+
+{% endblock %}
+
+{% block content %}
+
+        <div class="page-titles">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Table</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Order History Details</a></li>
+            </ol>
+        </div>
+        <!-- row -->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">In-store product Demo</h4>
+                        <p>Audits - Non Purchase</p>
+                    </div>
+                    <div class="card">
+            
+            <div class="card-body">
+                <div class="basic-form">
+                    <form>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label>Project Name</label>
+                                <input type="text" class="form-control" placeholder="Project Name">
+                            </div>
+                            
+                            <div class="form-group col-md-4">
+                                <label>Start Date</label>
+                                <input type="password" class="form-control" placeholder="Start Date">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>End Date</label>
+                                <input type="text" class="form-control"  placeholder="End Date">
+                            </div>
+                        </div>
+                        
+                        
+                        
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+        
+                    
+                </div>
+                
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header d-block">
+                        <h4 class="card-title">Age Range</h4>
+                        
+                    </div>
+                    <div class="card-body">
+                        <div class="bootstrap-badge">
+                            <a href="javascript:void(0);" class="badge badge-rounded badge-primary">18 and Above</a>
+                            <a href="javascript:void(0);" class="badge badge-rounded badge-secondary">18 - 25</a>
+                            <a href="javascript:void(0);" class="badge badge-rounded badge-success">25 - 40</a>
+                          </div>
+                    </div>
+                </div>
+                </div>
+                
+                <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header d-block">
+                        <h4 class="card-title">Occupation</h4>
+                        
+                    </div>
+                    <div class="card-body">
+                        <div class="bootstrap-badge">
+                            <a href="javascript:void(0);" class="badge badge-rounded badge-primary">Student</a>
+                            <a href="javascript:void(0);" class="badge badge-rounded badge-secondary">Service</a>
+                            </div>
+                    </div>
+                </div>
+                </div>
+                
+                <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header d-block">
+                        <h4 class="card-title">Income Range</h4>
+                        
+                    </div>
+                    <div class="card-body">
+                        <div class="bootstrap-badge">
+                            <a href="javascript:void(0);" class="badge badge-rounded badge-primary">Less Than 3 Lacs</a>
+                            <a href="javascript:void(0);" class="badge badge-rounded badge-secondary">INR. 3 lacs - 8 lacs</a>
+                            </div>
+                    </div>
+                </div>
+                </div>
+                
+                <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header d-block">
+                        <h4 class="card-title">Industry</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="bootstrap-badge">
+                            <a href="javascript:void(0);" class="badge badge-rounded badge-primary">Advertising and Marketing</a>
+                            <a href="javascript:void(0);" class="badge badge-rounded badge-secondary">Agriculture</a>
+                            <a href="javascript:void(0);" class="badge badge-rounded badge-success">Arts</a>
+                            <a href="javascript:void(0);" class="badge badge-rounded badge-danger">Biotechnology</a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                
+                <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header d-block">
+                        <h4 class="card-title">Car Price Range</h4>
+                        
+                    </div>
+                    <div class="card-body">
+                        <div class="bootstrap-badge">
+                            <a href="javascript:void(0);" class="badge badge-rounded badge-primary">Less than INR. 3 lacs</a>
+                            <a href="javascript:void(0);" class="badge badge-rounded badge-secondary">INR. 3 lacs - INR. 5 lacs</a>
+                            <a href="javascript:void(0);" class="badge badge-rounded badge-success">INR. 5 lacs - INR. 10 lacs</a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                
+                <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header d-block">
+                        <h4 class="card-title">Interest Areas</h4>
+                        
+                    </div>
+                    <div class="card-body">
+                        <div class="bootstrap-badge">
+                            <a href="javascript:void(0);" class="badge badge-rounded badge-primary">Science</a>
+                            <a href="javascript:void(0);" class="badge badge-rounded badge-secondary">Healthcare</a>
+                            <a href="javascript:void(0);" class="badge badge-rounded badge-success">Current Affairs</a>
+                        
+                        </div>
+                    </div>
+                </div>
+                </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Store Details</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-responsive-md">
+                                <thead>
+                                    <tr>
+                                        <th class="width50">
+                                            <div class="custom-control custom-checkbox checkbox-success check-lg me-3">
+                                                <input type="checkbox" class="form-check-input mt-0" id="checkAll" required="">
+                                                <label class="custom-control-label" for="checkAll"></label>
+                                            </div>
+                                        </th>
+                                        <th><strong>Number</strong></th>
+                                        <th><strong>Store Name</strong></th>
+                                        <th><strong>Address</strong></th>
+                                        <th><strong>City</strong></th>
+                                        <th><strong>State</strong></th>
+                                        <th><strong>Zipcode</strong></th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="custom-control custom-checkbox checkbox-success check-lg me-3">
+                                                <input type="checkbox" class="form-check-input mt-0" id="customCheckBox2" required="">
+                                                <label class="custom-control-label" for="customCheckBox2"></label>
+                                            </div>
+                                        </td>
+                                        <td><strong>542</strong></td>
+                                        <td><div class="d-flex align-items-center"> <span class="w-space-no">Jackson</span></div></td>
+                                        <td>example@example.com	</td>
+                                        <td>Mumbai</td>
+                                        <td>MH</td>
+                                        <td>400001</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="custom-control custom-checkbox checkbox-success check-lg me-3">
+                                                <input type="checkbox" class="form-check-input mt-0" id="customCheckBox3" required="">
+                                                <label class="custom-control-label" for="customCheckBox3"></label>
+                                            </div>
+                                        </td>
+                                        <td><strong>542</strong></td>
+                                        <td><div class="d-flex align-items-center"> <span class="w-space-no">Jackson</span></div></td>
+                                        <td>example@example.com	</td>
+                                        <td>Ahmedabad</td>
+                                        <td>GJ</td>
+                                        <td>380014</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="custom-control custom-checkbox checkbox-success check-lg me-3">
+                                                <input type="checkbox" class="form-check-input mt-0" id="customCheckBox4" required="">
+                                                <label class="custom-control-label" for="customCheckBox4"></label>
+                                            </div>
+                                        </td>
+                                        <td><strong>542</strong></td>
+                                        <td><div class="d-flex align-items-center"> <span class="w-space-no">Jackson</span></div></td>
+                                        <td>example@example.com	</td>
+                                        <td>Chennai</td>
+                                        <td>TN</td>
+                                        <td>600001</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Item Details</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-responsive-sm">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>View Images</th>
+                                        
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>1</th>
+                                        <td>Kolor Tea Shirt For Man</td>
+                                        <td class="color-primary">$21.56</td>
+                                        <td><span class="badge badge-primary light">View</span>
+                                        </td>
+                                        
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th>2</th>
+                                        <td>Kolor Tea Shirt For Women</td>
+                                        
+                                        <td class="color-success">$55.32</td>
+                                        <td><span class="badge badge-primary light">View</span>
+                                        </td>
+                                        
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th>3</th>
+                                        <td>Blue Backpack For Baby</td>
+                                        <td class="color-danger">$14.85</td>
+                                        <td><span class="badge badge-primary light">View</span>
+                                        </td>
+                                        
+                                        
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
+
+{% block additional_js  %}
+
+{% endblock %}

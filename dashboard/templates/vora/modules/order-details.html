@@ -1,0 +1,294 @@
+{% extends 'vora/elements/layouts/admin.html' %}
+{% load static %}
+<!-- Additional Css -->
+{% block additional_css  %}
+
+{% endblock %}
+
+{% block content %}
+{% load my_filters %}
+        <div class="page-titles">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Table</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Order History Details</a></li>
+            </ol>
+        </div>
+        <!-- row -->
+        <div class="row ">
+            <div class="col-lg-12">
+                <div class="card ">
+                    <div class="card-header">
+                        <h4 class="card-title ak">User Detail</h4>
+                        
+                    </div>
+                    <div class="card ">
+                        <div class="card-body">
+                            <div class="basic-form">
+                                <form>
+                                    <div class="form-row">
+                                      
+                                        <div class="form-group col-md-6">
+                                            <label>First Name</label>
+                                            <input type="text" class="form-control form-control-solid" placeholder="First Name" value="{{ order_user.first_name }}" readonly="">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Last Name</label>
+                                            <input type="text" class="form-control form-control-solid" placeholder="Last Name" value="{{ order_user.last_name }}" readonly="">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Email</label>
+                                            <input type="text" class="form-control form-control-solid" placeholder="email" value="{{ order_user.email }}" readonly="">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Phone number</label>
+                                            <input type="text" class="form-control form-control-solid" placeholder="Phone number" value="{{ order_user.phone_number }}" readonly="">
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label>Address</label>
+                                            <input type="text" class="form-control form-control-solid" placeholder="address" value="{{ order_user.address }}" readonly="">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label>City</label>
+                                            <input type="text" class="form-control form-control-solid" placeholder="city" value="{{ order_user.city }}" readonly="">
+                                        </div>
+                                        
+                                        <div class="form-group col-md-4">
+                                            <label>State</label>
+                                            <input type="text" class="form-control form-control-solid" placeholder="state" value="{{ order_user.state }}" readonly="">
+                                        </div>
+                                        
+                                        <div class="form-group col-md-4">
+                                            <label>Pincode</label>
+                                            <input type="text" class="form-control form-control-solid" placeholder="pincode" value="{{ order_user.pincode }}" readonly="">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Company Name</label>
+                                            <input type="text" class="form-control form-control-solid" placeholder="Company Name" value="{{ order_user.company }}" readonly="">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>GST</label>
+                                            {% if order_user.gst_in is None %}
+                                            <input type="text" class="form-control form-control-solid"  value="" readonly="">
+                                            {% else %}
+                                            <input type="text" class="form-control form-control-solid" placeholder="GST" value="{{ order_user.gst_in }}" readonly="">
+                                        
+                                            {% endif %}
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title ak">{{ order_obj.solution }}</h4>
+                        <p>{{ order_obj.category }} - {{ order_obj.subcategory }}</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="basic-form">
+                                <form>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Project Name</label>
+                                            <input type="text" class="form-control form-control-solid" placeholder="Project Name" value="{{ order_obj.project_name }}" readonly="">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Industry Selection</label>
+                                            <input type="text" class="form-control form-control-solid" placeholder="Industry Selection" value="{{ order_obj.industry_selection }}" readonly="">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Start Date</label>
+                                            <input type="text" class="form-control" placeholder="Start Date" value="{{ order_obj.start_date|date:'d-m-Y' }}" readonly="">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>End Date</label>
+                                            <input type="text" class="form-control"  placeholder="End Date" value="{{ order_obj.end_date|date:'d-m-Y' }}" readonly="">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Number of responses</label>
+                                            <input type="text" class="form-control"  placeholder="number of responses " value="{{ order_obj.total_responses }}" readonly="">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            {% if order_obj.audience_preference %}
+
+            {% if order_obj.age_range %}
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header d-block">
+                        <h4 class="card-title">Age Range</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="bootstrap-badge">
+                            {% for item in order_obj.age_range|split:"," %}
+                                <a href="javascript:void(0)" class="badge badge-primary" style="margin-top: 5px;">{{ item }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if order_obj.occupation %}
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header d-block">
+                        <h4 class="card-title">Occupation</h4>
+                        
+                    </div>
+                    <div class="card-body">
+                        <div class="bootstrap-badge">
+                            {% for item in order_obj.occupation|split:"," %}
+                                <a href="javascript:void(0)" class="badge badge-primary" style="margin-top: 5px;">{{ item }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if order_obj.income_range %}
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header d-block">
+                        <h4 class="card-title">Income Range</h4>
+                        
+                    </div>
+                    <div class="card-body">
+                        <div class="bootstrap-badge">
+                            {% for item in order_obj.income_range|split:"," %}
+                                <a href="javascript:void(0)" class="badge badge-primary" style="margin-top: 5px;">{{ item }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if order_obj.car_price_range %}
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header d-block">
+                        <h4 class="card-title">Car Price Range</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="bootstrap-badge">
+                            {% for item in order_obj.car_price_range|split:"," %}
+                                <a href="javascript:void(0)" class="badge badge-primary" style="margin-top: 5px;">{{ item }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if order_obj.interest_area %}
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header d-block">
+                        <h4 class="card-title">Interest Area</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="bootstrap-badge">
+                            {% for item in order_obj.interest_area|split:"," %}
+                                <a href="javascript:void(0)" class="badge badge-primary" style="margin-top: 5px;">{{ item }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endif %}
+
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Store Details</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-responsive-md">
+                                <thead>
+                                    <tr>
+                                        <th><strong>No. of Responses</strong></th>
+                                        <th><strong>Store Name</strong></th>
+                                        <th><strong>Address</strong></th>
+                                        <th><strong>City</strong></th>
+                                        <th><strong>State</strong></th>
+                                        <th><strong>Zipcode</strong></th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for store_data in order_store_data %}
+                                    <tr>
+                                        <td><strong>{{ store_data.store_responses }}</strong></td>
+                                        <td>{{ store_data.store_name }}</td>
+                                        <td>{{ store_data.store_address }}</td>
+                                        <td>{{ store_data.store_city }}</td>
+                                        <td>{{ store_data.store_state }}</td>
+                                        <td>{{ store_data.store_postalcode }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Item Details</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-responsive-sm">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Product Name</th>
+                                        <th>Product Brand</th>
+                                        <th>Product Description</th>
+                                        <th>View Images</th>
+                                        
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for project_data in order_project_data %}
+                                    <tr>
+                                        <th>{{ forloop.counter }}</th>
+                                        <td>{{ project_data.product_name }}</td>
+                                        <td>{{ project_data.product_brand }}</td>
+                                        <td>{{project_data.product_desc}}</td>
+                                        <td><span class="badge badge-primary light">View</span>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
+
+{% block additional_js  %}
+
+{% endblock %}

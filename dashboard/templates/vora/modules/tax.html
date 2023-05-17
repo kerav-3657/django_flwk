@@ -1,0 +1,262 @@
+	{% extends 'vora/elements/layouts/admin.html' %}
+{% load static %}
+
+
+{% block additional_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+ 
+{% endblock %}
+
+
+
+{% block message %}
+{% include 'vora/elements/alert.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div id="message">
+</div>     
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Tax Table One</h4>
+                    
+                    <div class="d-flex">
+
+                        {% if perms.users.delete_customuser %}
+                       
+                        <button type="submit" id="delete_multiple_btn" class="btn light btn-outline-primary btn-sm me-2 ">Delete</button>
+                        
+                        {% endif %}
+
+                        {% if perms.users.add_customuser %}
+                        <a href="{% url 'vora:add-tax' %}" class="btn btn-primary btn-sm ">ADD Tax  <span class="btn-icon-end">
+                            <i class="fa fa-plus"></i></span>
+                        </a>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-responsive-md">
+                            <thead>
+                                <tr>
+                                    <th style="width:50px;">
+                                        <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
+                                            <input  type="checkbox" class="form-check-input" id="checkAll" value="">
+                                            <label class="form-check-label" for="checkAll"></label>
+                                        </div>
+                                    </th>
+                                   
+                                    <th>Tax Name</th>
+                                    <th>Add Tax(Percentage)</th>
+                                    
+
+
+                                    {% if perms.users.delete_customuser or perms.users.change_customuser or perms.auth.change_permission %}
+                                    <th></th>
+                                    {% endif %}
+
+
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% csrf_token %}
+                                {% for user in user_list %}
+                                <tr id="{{ user.id }}">
+                                    <td>
+                                        <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
+                                            <input name="user_id[]" type="checkbox" class="form-check-input" value="{{ user.id }}">
+                                            <label class="form-check-label" for="checkbox-{{ user.id }}"></label>
+                                        </div>
+                                    </td>
+
+
+                                    <td>
+                                        <a href="{% url 'vora:user-details' id=user.id %}">
+                                        <div class="d-flex align-items-center">
+                                            <span class="w-space-no">{{ user.tax_name }}</span>
+                                        </div>
+                                    </a>
+                                    </td>
+                                    
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <span class="w-space-no">{{ user.add_tax}}</span>
+                                        </div>
+                                    </a>
+                                    </td>
+                                    <td>
+                                        <div class="sweetalert">
+                                            <div class="d-flex">
+
+                                                {% if perms.users.change_customuser %}
+                                                <a href="{% url 'vora:edit-tax' id=user.id %}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-pencil"></i></a>
+                                                {% endif %}
+                                                {% if perms.users.delete_customuser %}
+                                                <a href="{% url 'vora:delete-tax' id=user.id %}" class="btn btn-danger shadow btn-xs sharp sweet-success-cancel"><i class="fa fa-trash"></i></a>
+                                                {% endif %}
+                                            </div>
+                                    </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <nav mt-5>
+
+                        <p>
+                            <span class="current">
+                            Page {{ user_list.number }} of {{ user_list.paginator.num_pages }}.
+                           </span> 
+                           </p>
+                           
+
+                        <ul class="pagination pagination-gutter  justify-content-end">
+                            
+                                <li class="page-item page-indicator ">
+                                    <a class="page-link" href="{% if user_list.has_previous %}
+                                                                ?page={{ user_list.previous_page_number }}
+                                                                {% else %}
+                                                                javascript:void(0);
+                                                                {% endif %}">
+                                        <i class="la la-angle-left"></i></a>
+                                </li>
+
+                            {% for i in user_list.paginator.page_range|slice:":3" %}
+
+                                <li class="page-item {% if user_list.number == i %}
+                                                    active{% endif %}"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                            
+                            {% endfor %}
+
+                            
+                            {% if user_list.number > 3 %}
+                            <li class="page-item active"><a class="page-link" href="?page={{ user_list.number }}">{{ user_list.number }}</a></li>
+                            {% endif %}
+                            
+                            <li class="page-item page-indicator ">
+                                <a class="page-link"  href="{% if user_list.has_next %}
+                                                            ?page={{ user_list.next_page_number }}
+                                                            {% else %}
+                                                            javascript:void(0);
+                                                            {% endif %}">
+                                    <i class="la la-angle-right"></i></a>
+                            </li>
+                            <li>
+
+                              
+
+                            </li>
+                        </ul>
+                       
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}
+
+
+{% block additional_js %}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+
+$(document).ready(function(){
+
+
+$('#delete_multiple_btn').on('click', function () {
+
+    if(confirm("Are you sure you want to delete items? ")){
+        var id = [];
+       
+        $(':checkbox:checked').each(function(i){
+            id[i]=$(this).val();
+        });
+
+        if(id.length===0){
+            alert("Please select items to delete")
+        }else{
+            console.log(id);
+            $.ajax({
+                url:"/delete-multiple-tax/",
+                method:"POST",
+                dataType:'json',
+                data:{
+                    id,
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                },
+                success:function(res){
+                    console.log("Res : "+JSON.stringify(res));
+                    if(res.warning){
+                        document.getElementById("message").innerHTML += '<div class="alert alert-warning alert-dismissible alert-alt solid fade show">\
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">\
+                            </button>'+res.warning+'</div>';
+
+                    }
+                    if(res.success){
+                        console.log("ID : "+id);
+                        for(var i=1; i < id.length; i++){
+                            $('tr#'+id[i]+'').css('background-color','#ccc');
+                            // $('tr#'+id[i]+'').fadeOut('slow');
+                             $('tr#'+id[i]+'').remove(); 
+
+
+                        }
+                        document.getElementById("message").innerHTML += '<div class="alert alert-success alert-dismissible alert-alt solid fade show">\
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">\
+                            </button>'+res.success+'</div>';
+
+
+
+                    }
+                    
+                }
+            })
+        }
+    }
+
+
+});
+
+
+});
+
+
+    $('.sweet-success-cancel').on('click', function (event) {
+           event.preventDefault();
+           const url = $(this).attr('href');
+   
+           Swal.fire({
+               title: 'Are you sure?',
+               text: "You want to delete this Tax",
+               type: "warning",
+               icon: 'question',
+               showCancelButton: true,
+               confirmButtonText: "Yes, delete it !!",
+               confirmButtonText: 'Yes',
+               confirmButtonColor: "#DD6B55"
+               
+           }).then((result) => {
+               if (result.value) {
+                   window.location.href = url;
+               } else if (result.dismiss === Swal.DismissReason.cancel) {
+                   event.preventDefault();
+               }
+           })
+       });
+   </script>
+   
+{% endblock %}
+

@@ -1,0 +1,305 @@
+{% extends 'vora/elements/layouts/admin.html' %}
+{% load static widget_tweaks %}
+
+
+{% block additional_css %}
+
+{% endblock %}
+
+{% block message %}
+    {% include 'vora/elements/alert.html' %}
+{% endblock %}
+
+{% block content %}
+
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+                crossorigin="anonymous"></script>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+
+            <div class="col-xl-12 col-lg-12">
+                <div class="card  card-bx m-b30">
+                    <div class="card-header">
+                        <h6 class="title">Add Solution</h6>
+                    </div>
+
+                    <div class="profile-form">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-8 m-b30">
+                                    <label class="form-label">Name {% if form.name.field.required %}
+                                        <span class="text-danger">*</span> {% endif %}</label>
+                                    {{ form.name|attr:"type:text"|attr:"class:form-control"|attr:"placeholder:Name" }}
+                                    <div class="text-danger w-100 d-block mt-1">
+                                        {{ form.name.errors }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 m-b30">
+                                    <label class="form-label">URL structure {% if form.url_structure.field.required %}
+                                        <span class="text-danger">*</span> {% endif %}</label>
+                                    {{ form.url_structure|attr:"type:text"|attr:"class:form-control noSpace"|attr:"placeholder:URL structure" }}
+                                    <div class="text-danger w-100 d-block mt-1">
+                                        {{ form.url_structure.errors }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 m-b30">
+
+                                    <label class="form-label">Category {% if form.category.field.required %}
+                                        <span class="text-danger">*</span>{% endif %}</label>
+                                    {{ form.category|attr:"class:form-control default-select form-control-lg" }}
+                                    <div class="text-danger w-100 d-block mt-1 ">
+                                        {{ form.category.errors }}
+                                    </div>
+
+
+                                </div>
+                                <div class="col-sm-6 m-b30">
+
+                                    <label class="form-label">Sub Category {% if form.sub_category.field.required %}
+                                        <span class="text-danger">*</span>{% endif %}</label>
+                                    {{ form.sub_category|attr:"class:form-control default-select form-control-lg" }}
+                                    <div class="text-danger w-100 d-block mt-1 ">
+                                        {{ form.sub_category.errors }}
+                                    </div>
+
+                                </div>
+
+                                <div class="col-sm-6 m-b30">
+                                    <label class="form-label">Price {% if form.price.field.required %}
+                                        <span class="text-danger">*</span> {% endif %}</label>
+                                    {{ form.price|attr:"type:text"|attr:"class:form-control"|attr:"placeholder:Price" }}
+                                    <div class="text-danger w-100 d-block mt-1">
+                                        {{ form.price.errors }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 m-b30">
+
+                                    <label class="form-label">Tax {% if form.tax.field.required %}
+                                        <span class="text-danger">*</span>{% endif %}</label>
+                                    {{ form.tax|attr:"class:form-control default-select form-control-lg" }}
+                                    <div class="text-danger w-100 d-block mt-1 ">
+                                        {{ form.tax.errors }}
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="col-sm-6 m-b30">
+                                    <label class="form-label">What You'll Get (Short Description)
+                                        {% if form.about.field.required %}<span class="text-danger">*</span>{% endif %}
+                                    </label>
+                                    {% comment %} {{ form.about|attr:"class:form-control"|attr:"style:height: 144px;"|attr:"placeholder:What You'll Get (Short Description)" |safe}} {% endcomment %}
+                                    {{ form.about|attr:"class:form-control"|attr:"placeholder:What You'll Get (Short Description)" |safe }}
+
+                                    <div class="text-danger w-100 d-block mt-1">
+                                        {{ form.about.errors }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 m-b30">
+                                    <label class="form-label">How it Works {% if form.how_it_work.field.required %}
+                                        <span class="text-danger">*</span> {% endif %}</label>
+                                    {{ form.how_it_work|attr:"type:text"|attr:"class:form-control"|attr:"placeholder:How it Work" |safe }}
+                                    <div class="text-danger w-100 d-block mt-1">
+                                        {{ form.how_it_work.errors }}
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-6 m-b30">
+                                    <label class="form-label">Overview {% if form.overview.field.required %}
+                                        <span class="text-danger">*</span> {% endif %}</label>
+                                    {{ form.overview|attr:"type:text"|attr:"class:form-control"|attr:"placeholder:Overview" |safe }}
+                                    <div class="text-danger w-100 d-block mt-1">
+                                        {{ form.overview.errors }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 m-b30">
+                                    <label class="form-label">Execution Time {% if form.execution_time.field.required %}
+                                        <span class="text-danger">*</span> {% endif %}</label>
+                                    {{ form.execution_time|attr:"type:text"|attr:"class:form-control"|attr:"placeholder:Execution Time" |safe }}
+                                    <div class="text-danger w-100 d-block mt-1">
+                                        {{ form.execution_time.errors }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 m-b30">
+                                    <label class="form-label">Short Description {% if form.short_description.field.required %}
+                                        <span class="text-danger">*</span> {% endif %}</label>
+                                    {{ form.short_description|attr:"type:text"|attr:"class:form-control"|attr:"placeholder:Execution Time" |safe }}
+                                    <div class="text-danger w-100 d-block mt-1">
+                                        {{ form.short_description.errors }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12 m-b30">
+                                    <label class="form-label">Featured image {% if form.image.field.required %}
+                                        <span class="text-danger">*</span> {% endif %}</label>
+                                    {{ form.image|attr:"class:form-control"|attr:"placeholder:select multiple images" |safe }}
+                                    <div class="text-danger w-100 d-block mt-1">
+                                        {{ form.image.errors }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12 m-b30">
+                                    <div class="form-group">
+                                        <label class="form-label">Other images {% if form.about.field.required %}
+                                        {% endif %}</label>
+                                        <input type="file" name="images[]" id="images" multiple class="form-control"
+                                        accept="image/png, image/gif, image/jpeg" >
+                                      </div>
+                                    <div class="text-danger w-100 d-block mt-1">
+                                        {{ form.image.errors }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div id="image_preview" >
+                                    </div>
+                                </div>
+
+                            </div><!--RowEnd-->
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Save</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+<script>
+$(document).ready(function () {
+  var fileArr = [];
+  $("#images").change(function () {
+    // check if fileArr length is greater than 0
+    if (fileArr.length > 0) fileArr = [];
+
+    $("#image_preview").html("");
+    var total_file = document.getElementById("images").files;
+    if (!total_file.length) return;
+    for (var i = 0; i < total_file.length; i++) {
+      if (total_file[i].size > 1048576) {
+        return false;
+      } else {
+        fileArr.push(total_file[i]);
+        $("#image_preview").append(
+          "<div class='img-div' id='img-div" +
+            i +
+            "'><img src='" +
+            URL.createObjectURL(event.target.files[i]) +
+            "' class='img-responsive image img-thumbnail' title='" +
+            total_file[i].name +
+            "'><div class='middle'><button id='action-icon' value='img-div" +
+            i +
+            "' class='btn btn-danger' role='" +
+            total_file[i].name +
+            "'><i class='fa fa-trash'></i></button></div></div>"
+        );
+      }
+    }
+  });
+
+$('.noSpace').keyup(function() {
+ this.value = this.value.replace(/\s/g,'');
+});
+
+  $("body").on("click", "#action-icon", function (evt) {
+    var divName = this.value;
+    var fileName = $(this).attr("role");
+    $(`#${divName}`).remove();
+
+    for (var i = 0; i < fileArr.length; i++) {
+      if (fileArr[i].name === fileName) {
+        fileArr.splice(i, 1);
+      }
+    }
+    document.getElementById("images").files = FileListItem(fileArr);
+    evt.preventDefault();
+  });
+
+  function FileListItem(file) {
+    file = [].slice.call(Array.isArray(file) ? file : arguments);
+    for (var c, b = (c = file.length), d = !0; b-- && d; )
+      d = file[b] instanceof File;
+    if (!d)
+      throw new TypeError(
+        "expected argument to FileList is File or array of File objects"
+      );
+    for (b = new ClipboardEvent("").clipboardData || new DataTransfer(); c--; )
+      b.items.add(file[c]);
+    return b.files;
+  }
+});
+
+</script>
+<style>
+.img-div {
+    position: relative;
+    {#width: 46%;#}
+    float:left;
+    margin-right:5px;
+    margin-left:5px;
+    margin-bottom:10px;
+    margin-top:10px;
+}
+
+.image {
+    opacity: 1;
+    display: block;
+    width: 150px;
+    height: 150px;
+    {#max-width: auto;#}
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.img-div:hover .image {
+    opacity: 0.3;
+}
+
+.img-div:hover .middle {
+    opacity: 1;
+}
+</style>
+{% endblock %}
+
+
+{% block additional_js %}
+
+
+    <script>
+
+        $(".multi-select").select2({
+            placeholder: "Select the Role"
+        });
+    </script>
+
+
+{% endblock %}
+
+

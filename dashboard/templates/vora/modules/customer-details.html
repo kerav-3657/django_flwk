@@ -1,0 +1,92 @@
+{% extends 'vora/elements/layouts/admin.html' %}
+{% load static %}
+<!-- Additional Css -->
+{% block additional_css  %}
+
+{% endblock %}
+
+{% block content %}
+{% load my_filters %}
+        <div class="page-titles">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Table</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Customer History Details</a></li>
+            </ol>
+        </div>
+        <!-- row -->
+        <div class="row ">
+            <div class="col-lg-12">
+                <div class="card ">
+                    <div class="card-header">
+                        <h4 class="card-title ak">Customer Detail</h4>
+                        
+                    </div>
+                    <div class="card ">
+                        <div class="card-body">
+                            <div class="basic-form">
+                                <form>
+                                    <div class="form-row">
+                                      
+                                        <div class="form-group col-md-6">
+                                            <label>First Name</label>
+                                            <input type="text" class="form-control form-control-solid" placeholder="First Name" value="{{ order_user.first_name }}" readonly="">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Last Name</label>
+                                            <input type="text" class="form-control form-control-solid" placeholder="Last Name" value="{{ order_user.last_name }}" readonly="">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Email</label>
+                                            <input type="text" class="form-control form-control-solid" placeholder="email" value="{{ order_user.email }}" readonly="">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Phone number</label>
+                                            <input type="text" class="form-control form-control-solid" placeholder="Phone number" value="{{ order_user.phone_number }}" readonly="">
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label>Address</label>
+                                            <input type="text" class="form-control form-control-solid" placeholder="address" value="{{ order_user.address }}" readonly="">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label>City</label>
+                                            <input type="text" class="form-control form-control-solid" placeholder="city" value="{{ order_user.city }}" readonly="">
+                                        </div>
+                                        
+                                        <div class="form-group col-md-4">
+                                            <label>State</label>
+                                            <input type="text" class="form-control form-control-solid" placeholder="state" value="{{ order_user.state }}" readonly="">
+                                        </div>
+                                        
+                                        <div class="form-group col-md-4">
+                                            <label>Pincode</label>
+                                            <input type="text" class="form-control form-control-solid" placeholder="pincode" value="{{ order_user.pincode }}" readonly="">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Company Name</label>
+                                            <input type="text" class="form-control form-control-solid" placeholder="Company Name" value="{{ order_user.company }}" readonly="">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>GST</label>
+                                            {% if order_user.gst_in is None %}
+                                            <input type="text" class="form-control form-control-solid"  value="" readonly="">
+                                            {% else %}
+                                            <input type="text" class="form-control form-control-solid" placeholder="GST" value="{{ order_user.gst_in }}" readonly="">
+                                        
+                                            {% endif %}
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
+
+{% endblock %}
+
+{% block additional_js  %}
+
+{% endblock %}

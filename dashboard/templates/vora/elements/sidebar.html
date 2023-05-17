@@ -1,0 +1,83 @@
+{% load static %}
+<div class="dlabnav">
+    <div class="dlabnav-scroll">
+        <ul class="metismenu" id="menu">
+            <li><a class="" href="{% url 'vora:index' %}" >
+                <i class="flaticon-381-networking"></i>
+                <span class="nav-text">Dashboard</span>
+            </a>
+        </li>
+                <li><a class="has-arrow ai-icon" href="javascript:void(0);" aria-expanded="false">
+                    <i class="flaticon-381-networking"></i>
+                    <span class="nav-text">Customers</span>
+                </a>
+                <ul aria-expanded="false">
+                    
+                    <li><a href="{% url 'vora:customers' %}">Active Customers</a></li>
+                    <li class="d-none"><a href="{% url 'vora:inactiveCustomers' %}" >Inactive Customers</a></li>
+                    
+                </ul>
+            </li>
+            
+            <li><a class="has-arrow ai-icon" href="javascript:void(0);" aria-expanded="false">
+                    <i class="flaticon-381-networking"></i>
+                    <span class="nav-text">Master</span>
+                </a>
+                <ul aria-expanded="false">
+                      <li><a href="{% url 'vora:category' %}">Category</a></li>
+                      <li><a href="{% url 'vora:sub-category' %}">Sub Category</a></li>
+                      <li><a href="{% url 'vora:tax' %}">Tax</a></li>
+                      <li><a href="{% url 'vora:industry-filter' %}">Industry</a></li>
+                      <li><a href="{% url 'vora:interest-area' %}">Interest Area</a></li>
+                </ul>
+            </li>
+
+            <li><a class="has-arrow ai-icon" href="javascript:void(0);" aria-expanded="false">
+                    <i class="flaticon-381-networking"></i>
+                    <span class="nav-text">Solutions</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{% url 'vora:solutions' %}">All Solutions</a></li>
+                    <li><a href="{% url 'vora:archieved-solutions' %}">Archieved Solutions</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="has-arrow ai-icon" href="javascript:void(0);" aria-expanded="false">
+                    <i class="flaticon-381-networking"></i>
+                    <span class="nav-text">Orders</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{% url 'vora:all-orders' %}">All Orders</a></li>
+                    <li><a href="{% url 'vora:all-active-orders' %}">Active Orders</a></li>
+                    <li><a href="{% url 'vora:all-draft-orders' %}">Draft Orders</a></li>
+                    <li><a href="{% url 'vora:all-complete-orders' %}">Complete Orders</a></li>
+                </ul>
+            </li>
+
+            {% if perms.users.view_customuser or perms.auth.view_group or perms.auth.view_permission %}
+                <li><a class="has-arrow ai-icon" href="javascript:void(0);" aria-expanded="false">
+                    <i class="flaticon-381-networking"></i>
+                    <span class="nav-text">Admin Users</span>
+                    
+                </a>
+                <ul aria-expanded="false">
+                    {% if perms.users.view_customuser or perms.users.change_customuser or perms.users.add_customuser or perms.users.delete_customuser %}
+                    <li><a href="{% url 'vora:users' %}">Users</a></li>
+                    {% endif %}
+                    {% if perms.auth.view_group or perms.auth.change_group or perms.auth.add_group or perms.auth.delete_group %}
+                    <li><a href="{% url 'vora:groups' %}">Roles</a></li>
+                    {% endif %}
+                    {% if perms.auth.view_permission or perms.auth.change_permission or perms.auth.add_permission or  perms.auth.delete_permission%}
+                    <li><a href="{% url 'vora:permissions' %}" class="d-none">Permissions</a></li>
+                    {% endif %}
+                </ul>
+            </li>
+            {% endif %}
+            
+        </ul>
+        <a class="add-menu-sidebar  d-none" href="javascript:void(0)"  data-bs-toggle="modal" data-bs-target="#addOrderModalside" >+ New Project</a>
+        <div class="copyright">
+            <p><strong>FloorWalk Admin Dashboard</strong> © 2023 All Rights Reserved</p>
+        </div>
+    </div>
+</div>
